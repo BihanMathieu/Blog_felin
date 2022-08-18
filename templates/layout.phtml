@@ -1,0 +1,14 @@
+<body>
+    <?php 
+    if($page === "homescreen"){
+        require"header_homescreen.phtml";
+    }else{
+        require"header.phtml";
+    }  
+    ?>
+        <body>
+                <?php require "./templates/".$page.".phtml"; ?>
+        </body>
+    <?php require"footer.phtml" ?>
+    <script type="text/javascript" src="./asset/javascript/accueil/header.js"></script>
+</body>

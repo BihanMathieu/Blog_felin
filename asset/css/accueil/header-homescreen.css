@@ -1,0 +1,49 @@
+/******************************************************************************************************************/
+/*                                            header page accueil*/
+/******************************************************************************************************************/
+
+header{
+    background-image: url(../../images/home_banner2.jpg);
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position: center;
+    min-width:99vw;
+    height:100vh;
+}
+
+/************************************************************************************************************/
+/*                                            NAV*/
+/************************************************************************************************************/
+
+nav{
+    width:100%;
+    position:fixed;
+}
+nav div{
+   width:80%;
+   margin-left:10%;
+   align-items:center;
+   justify-content: space-around;
+   
+}
+
+nav img{
+    width:60%;
+}
+
+nav a{
+    align-items:center;
+    font-size: 2rem;
+    text-align: center;
+    width:15%;
+    
+}
+
+header a:hover{
+    font-size: 2.5rem;
+}
+
+.navbar.scroll{
+    background-color: rgba(0,0,0,0.5);
+}
+
