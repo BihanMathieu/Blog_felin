@@ -6,16 +6,23 @@ class ContactUsController{
     
     private ContactUsManager $cm;
     
+    //fonction pour charger le template de contact
     public function contactUs():void{
         $page = "contactUs";
         require "./templates/layout.phtml";
     }
-
-    function sendMail(){
     
+    
+    //function pour envoyer un mail
+    function sendMail(){
+        
+        
+        //je verifie que le formulaire a bien été envoyé
         if(isset($_POST['submit'])){
+            //je vérifie que les champs ne sont pas vide
             if(!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['message'])){
                 
+                //j'instancie mes variables
                 $name = htmlspecialchars($_POST['name']);
                 $email = htmlspecialchars($_POST['email']);
                 $message = htmlspecialchars($_POST['message']);
@@ -26,6 +33,7 @@ class ContactUsController{
                     echo"votre message a ete envoye";
                 }
                 
+                //je crée le contact en bdd
                 $cm = new ContactUsManager();
                 $c = $cm->createContact($name,$email,$message);
                 

@@ -15,7 +15,9 @@ class ContactUSManager{
         '363dce9d2ee9b1de8aa743164b30ff7f'
         );
     }
-
+    
+    
+    //function pour rentrer un contacte en bdd
     function createContact($name,$email,$message){
             
             $insertContact = $this->db->prepare('INSERT INTO contacts(name,email,message) VALUES(?,?,?)');
