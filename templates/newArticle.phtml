@@ -1,0 +1,19 @@
+<main>
+    <h1>Nouvelle Article</h1>
+    <form name="form_newArticle" action="index.php?route=newArticle" method="post" enctype="multipart/form-data">
+        <label> Quelle categorie</label>
+        <select name="category" class="long">
+            <option value="actualite">Actualité</option>
+            <option value="espece">Espèce</option>
+        </select>
+        <label>Titre</label>
+        <input type="text" name="title" class="long"/>
+        <label> Description </label>
+        <textarea name="description" class="long field-textarea"></textarea>
+        <label> contenue </label>
+        <textarea name="content" class="long field-textarea"></textarea>
+        <label>Selectionner l'image a upload</label>
+        <input type="file" name="image" id="fileToUpload">
+        <input type="submit" name="submit" value="Publier"> 
+    </form>
+</main>

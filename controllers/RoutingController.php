@@ -3,6 +3,7 @@
 require "./managers/PageManager.php";
 require "ContactUsController.php";
 require "AuthentificationController.php";
+require "ArticleController.php";
 
 class RoutingController
 {
@@ -42,6 +43,11 @@ class RoutingController
         {
             $ac = new AuthentificationController();
             $ac->disconnect();
+        }
+        else if($route === "newArticle"){
+            $ac = new ArticleController();
+            $ac->newArticle();
+            $ac->createArticle();
         }
         else
         {

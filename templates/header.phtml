@@ -12,7 +12,9 @@
     
 </head>
 
-<?php session_start();?>
+<?php session_start();
+var_dump($_SESSION);
+?>
 
 <header>
     <nav class="navbar">
@@ -29,6 +31,9 @@
             <a href="index.php?route=disconnect"><p>deconexion</p></a>
             <?php } ?>
             
+            <?php if (!empty($_SESSION) && $_SESSION['admin'] === 'yes'){ ?>
+            <a href="index.php?route=newArticle"><p>Nouvelle article</p></a>
+            <?php } ?>
         </div>
     </nav>
 </header>
