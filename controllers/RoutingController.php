@@ -4,6 +4,7 @@ require "./managers/PageManager.php";
 require "ContactUsController.php";
 require "AuthentificationController.php";
 require "ArticleController.php";
+require "MessageController.php";
 
 class RoutingController
 {
@@ -18,8 +19,9 @@ class RoutingController
     {
         if($route === "homescreen")
         {
-            $page = $route;
-            require"./templates/layout.phtml";
+            $ac = new ArticleController();
+            $ac->article("homescreen");
+            
         }
         else if($route === "contactUs")
         {
@@ -44,10 +46,30 @@ class RoutingController
             $ac = new AuthentificationController();
             $ac->disconnect();
         }
-        else if($route === "newArticle"){
+        else if($route === "newArticle")
+        {
             $ac = new ArticleController();
             $ac->newArticle();
             $ac->createArticle();
+        }
+        else if($route === "species")
+        {
+            $ac = new ArticleController();
+            $ac->article("species");
+        }
+        else if($route === "news")
+        {
+            $ac = new ArticleController();
+            $ac->article("news");
+        }
+        else if($route === "article")
+        {
+            $ac = new ArticleController();
+            $ac->articleById($_GET['id']);
+        }
+        else if($route === "message"){
+            $mc = new MessageController();
+            $mc->createMessage();
         }
         else
         {

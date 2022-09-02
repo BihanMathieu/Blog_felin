@@ -7,7 +7,7 @@ class User
     private string $password;
     private string $admin;
     
-    function __construct(?int $id, string $username, string $password, string $admin)
+    function __construct(int $id, string $username, string $password, string $admin)
     {
         
         $this->id = $id;

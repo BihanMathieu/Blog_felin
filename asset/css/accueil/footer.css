@@ -5,6 +5,7 @@ footer{
 footer section{
     width:80%;
     margin:auto;
+    justify-content: space-around;
 }
 
 footer div{

@@ -27,11 +27,10 @@ class MediaController
         }
     }
     
-    private function checkFileType(string $fileName, string $fileType)
+    private function checkFileType(string $fileType)
     {
-        $extension = explode('.', $fileName);
         
-        if(count($extension) >= 2 || !in_array($fileType, $this->allowedFileTypes)){
+        if(!in_array($fileType, $this->allowedFileTypes)){
             exit("Le fichier n'est pas authorisé");
             
         }
@@ -40,11 +39,11 @@ class MediaController
     public function upload(array $file) : Media
     {
         $this->checkFileSize($file['size']);
-        $this->checkFileType($file['name'], $file['type']); 
+        $this->checkFileType($file['type']); 
         $originalName = $file["name"];
         $fileName = $this->generateFileName();
         $fileType = pathinfo($originalName)["extension"];
-        $url = getcwd() . $this->uploadFile . $fileName . ".". $fileType;
+        $url = ".". $this->uploadFile . $fileName . ".". $fileType;
         
         move_uploaded_file($file["tmp_name"], $url);
         

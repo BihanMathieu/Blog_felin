@@ -5,10 +5,25 @@ class Article{
     private int $id;
     private string $category;
     private string $title;
-    private string $descritpion;
+    private string $description;
     private string $content;
     private string $username;
-    private datetime $date;
+    private string $date;
+    private int $mediaId;
+    private ?Media $media;
+    
+     function __construct(int $id, string $category, string $title, string $description, string $content, string $username, string $date, int $mediaId, ?Media $media )
+    {
+        $this->id =$id;
+        $this->category = $category;
+        $this->title = $title;
+        $this->description = $description;
+        $this->content = $content;
+        $this->userName = $username;
+        $this->date = $date;
+        $this->mediaId = $mediaId;
+        $this->media = $media;
+    }
     
     public function getId() : int
     {
@@ -18,6 +33,16 @@ class Article{
     public function setId(int $id) : void
     {
         $this->id = $id;
+    }
+    
+    public function getCategory() : string
+    {
+        return $this->category;
+    }
+    
+    public function setCategory(string $category) : string
+    {
+        $this->category = $category;
     }
     
     public function getTitle() : string
@@ -68,6 +93,11 @@ class Article{
     public function setDate(datetime $date) : void
     {
         $this->date = $date;
+    }
+    
+    public function getMedia() : Media
+    {
+        return $this->media;
     }
 }
 

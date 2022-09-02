@@ -1,8 +1,7 @@
 <main class="sb">
-<?php foreach ($getArticle as $article){ 
-var_dump($article);
-?>  
-    
+<?php
+    foreach ($getArticle as $article){ 
+        if($article->getCategory() === 'actualite'){ ?>
     <section class="article">
         <article>
             <div>
@@ -13,5 +12,8 @@ var_dump($article);
             <a href="index.php?route=article&amp;id=<?= $article->getId(); ?>">lire la suite</a>
         </article>
     </section>
-        <?php } ?>
+<?php   
+        } 
+    }
+?>
 </main>

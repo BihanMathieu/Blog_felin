@@ -3,10 +3,6 @@ main{
     margin:auto;
     background-color: #fff;
 }
-
-.article{
-    width:60%;
-}
 .article article{
    border:1px solid black;
    border-radius:25px;
@@ -25,38 +21,4 @@ main{
 
 article:hover{
     box-shadow: 4px 4px 8px 2px #000000;
-}
-
-
-/***********************************************************************************************/
-/*                                sugestion coté*/
-/**********************************************************************************************/
-
-.card{
-    padding:1rem;
-    margin-bottom:2rem;
-    border:1px solid black;
-    border-radius:25px;
-}
-.sugestion{
-    width:30%;
-    margin:5rem;
-}
-.sugestion h1{
-    text-align: center;
-    margin:1rem;
-}
-.sugestion img{
-    width:100%;
-}
-.imgSugestion{
-    width:30%;
-}
-.sb{
-    justify-content: space-around;
-}
-.fix{
-    position:sticky;
-    top:10rem;
-    height: fit-content;
 }

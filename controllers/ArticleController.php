@@ -5,6 +5,24 @@ require "MediaController.php";
 
 class ArticleController{
 
+    //fonction pour charger la page d'acceuil avec tout les articles
+    public function article(string $pages):void{
+        $page = $pages;
+        $am = new ArticleManager();
+        $getArticle = $am->getArticleMedia();
+        require "./templates/layout.phtml";
+    }
+    
+    public function articleById($id):void{
+        $page = 'article';
+        $am = new ArticleManager();
+        $mm = new MessageManager();
+        $getArticle = $am->getArticleById($id);
+        $getMessage = $mm->getMessageByArticleId($id);
+        require "./templates/layout.phtml";
+    }
+    
+    
     // fonction pour charger le template de formulaire pour un nouvelle article
     public function newArticle():void{
         $page = "newArticle";
@@ -23,8 +41,8 @@ class ArticleController{
                 $fileType = $media->getFileType();
                 $url = $media->getUrl();
                  
-                $ac = new ArticleManager();
-                $article = $ac->createMedia($originalName, $fileName, $fileType, $url);
+                $am = new ArticleManager();
+                $article = $am->createMedia($originalName, $fileName, $fileType, $url);
                 
                 $category = $_POST['category'];
                 $title = htmlspecialchars($_POST['title']);
@@ -37,6 +55,8 @@ class ArticleController{
 
                 $ac = new ArticleManager();
                 $a = $ac -> createArticle($category,$title,$description,$content,$username,$date,$mediaId);
+            }else{
+                echo "veuillez remplir remplir tout les champs";
             }
         }
     

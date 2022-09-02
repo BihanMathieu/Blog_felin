@@ -2,18 +2,18 @@
     <h1>Nouvelle Article</h1>
     <form name="form_newArticle" action="index.php?route=newArticle" method="post" enctype="multipart/form-data">
         <label> Quelle categorie</label>
-        <select name="category" class="long">
+        <select name="category" id="category">
             <option value="actualite">Actualité</option>
             <option value="espece">Espèce</option>
         </select>
         <label>Titre</label>
-        <input type="text" name="title" class="long"/>
+        <input type="text" name="title" value="" id="title"/>
         <label> Description </label>
-        <textarea name="description" class="long field-textarea"></textarea>
+        <textarea name="description" id="description"></textarea>
         <label> contenue </label>
-        <textarea name="content" class="long field-textarea"></textarea>
+        <textarea name="content" id="content"></textarea>
         <label>Selectionner l'image a upload</label>
         <input type="file" name="image" id="fileToUpload">
-        <input type="submit" name="submit" value="Publier"> 
+        <input type="submit" name="submit" value="Publier" id="submit"> 
     </form>
 </main>

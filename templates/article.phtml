@@ -1,0 +1,27 @@
+<main class="sb">
+    <section class="article">
+        <?php var_dump($getMessage) ;?>
+        <?php var_dump($getArticle) ;?>
+        <article>
+            <div>
+                <img src="<?=$getArticle->getMedia()->getUrl()?>"></img>
+            </div>
+            <h1><?= $getArticle->getTitle(); ?></h1>
+            <p><?= $getArticle->getDescription(); ?></p>
+        </article>
+    </section>
+    <?php foreach($getMessage as $message){ ?>
+    <section>
+        <p><?= $message->getUsername(); ?></p>
+    </section>
+    <?php } ?>
+
+<?php if (!empty($_SESSION)){ ?>
+<form name="form_message" action="index.php?route=message" method="post">
+    <input type="hidden" name="name" value="<?= $_SESSION['name']; ?>"/>
+    <input type="hidden" name="id" value="<?= $_GET['id']; ?>"/>
+    <input type="textarea" name="message"/>
+    <input type="submit" name="submit" value="Envoyer"/>
+</form>
+<?php } ?>
+</main>

@@ -19,7 +19,7 @@ class AuthentificationController{
     //function pour cree un utilisteur
     function createUser(){
         
-        //Je verifie que le formulaire est envoye
+        //Je verifie que le formulaire est envoyé
         if(isset($_POST['submit'])){
             
             //je verifie que tous les champs de formulaire son remplies

@@ -13,8 +13,9 @@ class Media
     private string $fileType;
     private string $url;
     
-    function __construct(string $originalName, string $fileName, string $fileType, string $url)
+    function __construct(int $id, string $originalName, string $fileName, string $fileType, string $url)
     {
+        $this->id = $id;
         $this->originalName = $originalName;
         $this->fileName = $fileName;
         $this->fileType = $fileType;
