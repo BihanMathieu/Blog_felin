@@ -4,24 +4,22 @@ class Article{
     
     private int $id;
     private string $category;
-    private string $title;
-    private string $description;
     private string $content;
     private string $username;
     private string $date;
     private int $mediaId;
+    private string $alt;
     private ?Media $media;
     
-     function __construct(int $id, string $category, string $title, string $description, string $content, string $username, string $date, int $mediaId, ?Media $media )
+     function __construct(int $id, string $category, string $content, string $username, string $date, int $mediaId, string $alt, ?Media $media )
     {
         $this->id =$id;
         $this->category = $category;
-        $this->title = $title;
-        $this->description = $description;
         $this->content = $content;
         $this->userName = $username;
         $this->date = $date;
         $this->mediaId = $mediaId;
+        $this->alt = $alt;
         $this->media = $media;
     }
     
@@ -43,26 +41,6 @@ class Article{
     public function setCategory(string $category) : string
     {
         $this->category = $category;
-    }
-    
-    public function getTitle() : string
-    {
-        return $this->title;
-    }
-    
-    public function setTitle(string $title) : void
-    {
-        $this->title = $title;
-    }
-    
-    public function getDescription() : string
-    {
-        return $this->description;
-    }
-    
-    public function setDescription(string $description) : void
-    {
-        $this->description = $description;
     }
     
     public function getContent() : string
@@ -98,6 +76,16 @@ class Article{
     public function getMedia() : Media
     {
         return $this->media;
+    }
+    
+    public function setAlt(string $alt) : void
+    {
+        $this->alt = $alt;
+    }
+    
+    public function getAlt() : string
+    {
+        return $this->alt;
     }
 }
 

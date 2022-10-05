@@ -1,19 +1,18 @@
 <main>
     <h1>Nouvelle Article</h1>
-    <form name="form_newArticle" action="index.php?route=newArticle" method="post" enctype="multipart/form-data">
+    <form class="editor" name="form_newArticle" action="index.php?route=newArticle" method="post" enctype="multipart/form-data">
         <label> Quelle categorie</label>
         <select name="category" id="category">
-            <option value="actualite">Actualité</option>
-            <option value="espece">Espèce</option>
+            <option>Actualité</option>
+            <option>Espèce</option>
         </select>
-        <label>Titre</label>
-        <input type="text" name="title" value="" id="title"/>
-        <label> Description </label>
-        <textarea name="description" id="description"></textarea>
-        <label> contenue </label>
-        <textarea name="content" id="content"></textarea>
+        <textarea name="content" id="content" placeholder="Ecriver votre article"></textarea>
         <label>Selectionner l'image a upload</label>
-        <input type="file" name="image" id="fileToUpload">
-        <input type="submit" name="submit" value="Publier" id="submit"> 
+        <section>
+            <input type="file" name="image" id="fileToUpload">
+            <input type="text" name="descriptionImg" id="descriptionImg" placeholder="Décrire l'image"/>
+        </section>
+        <input class="button" type="submit" name="submit" value="Publier" id="submit"> 
     </form>
+    <script type="text/javascript" src="./asset/javascript/form_new_article.js"></script>
 </main>

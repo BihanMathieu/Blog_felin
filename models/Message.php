@@ -49,7 +49,7 @@ class Message
         return $this;
     }
     
-    public function getDate() : datetime
+    public function getDate() : string
     {
         return $this->date;
     }

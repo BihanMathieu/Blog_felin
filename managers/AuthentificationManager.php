@@ -16,17 +16,22 @@ class AuthentificationManager{
     }
     
     //fonction rentrer un utilisateur dans la bdd
-    function createUser($username,$password){
+    function createUser($username,$password,$admin){
             
-            $insertUser = $this->db->prepare('INSERT INTO users(username,password,admin) VALUES(?,?,"no")');
-            $insertUser->execute(array($username,$password));
+            $insertUser = $this->db->prepare('INSERT INTO users(username,password,admin) VALUES(:username,:password,:admin)');
+            $parameters = [
+                    'username' => $username,
+                    'password' => $password,
+                    'admin' => $admin
+                ];
+            $insertUser->execute($parameters);
     } 
     
     
     //function pour récuperer les utilisateurs
     function verificationConnexion(){
             
-            $verifConnexion = $this->db->prepare('SELECT * FROM users');
+            $verifConnexion = $this->db->prepare('SELECT id,username,password,admin FROM users');
             $verifConnexion->execute();
             $result = $verifConnexion->fetchall(PDO::FETCH_ASSOC);
             

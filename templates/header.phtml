@@ -1,37 +1,41 @@
-<!doctype html>
+<?php session_start();?>
+
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Blog felin</title>
-    <link rel="icon" href="./asset/images/logo.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./asset/css/accueil/header-template.css">
-    <link rel="stylesheet" href="./asset/css/base.css">
-    <link rel="stylesheet" href="./asset/css/accueil/body.css">
-    <link rel="stylesheet" href="./asset/css/accueil/footer.css">
+    <link rel="icon" href="/asset/images/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/Blog_felin/asset/css/style.css">
+    <meta name="viewport" content="width=device-width"/>
+    <!--<link rel="stylesheet" href="/Blog_felin/asset/css/accueil/header-template.css">-->
+    <!--<link rel="stylesheet" href="/Blog_felin/asset/css/base.css">-->
+    <!--<link rel="stylesheet" href="/Blog_felin/asset/css/accueil/body.css">-->
+    <!--<link rel="stylesheet" href="/Blog_felin/asset/css/accueil/footer.css">-->
+    <!--<link rel="stylesheet" href="/Blog_felin/asset/css/modal.css">-->
     <script src="https://kit.fontawesome.com/dc3e73b9f2.js" crossorigin="anonymous"></script>
-    
 </head>
-
-<?php session_start();?>
 
 <header>
     <nav class="navbar">
-        <div class="flex ">
-            <a href="index.php?route=homescreen"><img src="./asset/images/logo.png" alt=""></a>
-            <a href="index.php?route=homescreen">Accueil</a>
-            <a href="index.php?route=species">Liste des espèce</a>
-            <a href="index.php?route=news">Actualités</a>
+        <a href="index.php?route=homescreen"><img class="logo" src="./asset/images/logo.png" alt=""></a>
+        <ul class="nav-links">
+            <li><a href="index.php?route=homescreen">Accueil</a></li>
+            <li><a href="index.php?route=species">Liste des espèce</a></li>
+            <li><a href="index.php?route=news">Actualités</a></li>
             
-            <?php if (!$_SESSION){ ?>
-            <a href="index.php?route=signIn"><p>Se connecter</p></a>
+            <?php if (isset($_SESSION['isLogin']) && $_SESSION['isLogin'] === true){ ?>
+            <li><p><?php if(isset($_SESSION['name'])){echo $_SESSION['name'];} ?></p></li>
+            <li><a href="index.php?route=disconnect"><p>Deconexion</p></a></li>
             <?php }else{ ?>
-            <p><?= $_SESSION['name']; ?></p>
-            <a href="index.php?route=disconnect"><p>deconexion</p></a>
+            <li><a href="index.php?route=signIn"><p>Se connecter</p></a></li>
+            
             <?php } ?>
             
-            <?php if (!empty($_SESSION) && $_SESSION['admin'] === 'yes'){ ?>
-            <a href="index.php?route=newArticle"><p>Nouvelle article</p></a>
+            <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] === 'yes'){ ?>
+            <li><a href="index.php?route=newArticle">Nouvelle article</a></li>
             <?php } ?>
-        </div>
+        </ul>
+        <img class="menu-hamburger" src="/Blog_felin/asset/images/hamburger-menu-icon-png-white-10.jpg"></img>
     </nav>
 </header>

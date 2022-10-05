@@ -35,7 +35,7 @@ class ContactUsController{
                 
                 //je crée le contact en bdd
                 $cm = new ContactUsManager();
-                $c = $cm->createContact($name,$email,$message);
+                $createContact= $cm->createContact($name,$email,$message);
                 
             }else{
                 echo "veuillez remplir tout les champs";

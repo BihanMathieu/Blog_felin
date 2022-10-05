@@ -1,10 +1,14 @@
-<main>
+<main class=only-form>
+    <article class="connect">
     <h1>Inscription</h1>
-    <form name="form_registration" action="index.php?route=registration" method="post">
-        <label> Nom d'utilisateur</label>
-        <input type="text" name="username" class="long"/>
-        <label>Mots de passe</label>
-        <input type="password" name="password" class="long"/>
-        <input type="submit" name="submit" value="Inscription"> 
-    </form>
+        <form name="form_registration" action="index.php?route=registration" method="post">
+            <section>
+                <input type="text" name="username" placeholder="Nom d'utilisateur (8 à 16 caractères)"/>
+            </section>
+            <section>
+                <input type="password" name="password" placeholder="Mots de passe"/>
+            </section>
+            <input type="submit" name="submit" value="Inscription" id="submit">
+        </form>
+    </article>
 </main>

@@ -1,0 +1,21 @@
+<main>
+    <?php var_dump($_SESSION) ;?>
+    <h1>Modifier Article</h1>
+    <form name="form_update" action="index.php?route=update&amp;id=<?= $_GET['id'];?>" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?= $_GET['id'];?>"/>
+        <label> Quelle categorie</label>
+        <select name="category" id="category">
+            <option>Actualité</option>
+            <option>Espèce</option>
+            <option selected="selected"><?= $getArticle->getCategory(); ?></option>
+        </select>
+        <label> contenue </label>
+        <textarea name="content" id="content"><?= $getArticle->getContent(); ?></textarea>
+        <label>Selectionner l'image a upload</label>
+        <input type="file" name="image" id="fileToUpload"?>
+        <label> Description image</label>
+        <textarea name="descriptionImg" id="descriptionImg"><?= $getArticle->getAlt(); ?></textarea>
+        <input type="submit" name="submit" value="Modifier" id="submit">
+    </form>
+    <script type="text/javascript" src="./asset/javascript/form_new_article.js"></script>
+</main>

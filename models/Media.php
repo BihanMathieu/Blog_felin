@@ -7,13 +7,13 @@
 
 class Media
 {
-    private int $id;
+    private ?int $id;
     private string $originalName;
     private string $fileName;
     private string $fileType;
     private string $url;
     
-    function __construct(int $id, string $originalName, string $fileName, string $fileType, string $url)
+    function __construct(?int $id, string $originalName, string $fileName, string $fileType, string $url)
     {
         $this->id = $id;
         $this->originalName = $originalName;

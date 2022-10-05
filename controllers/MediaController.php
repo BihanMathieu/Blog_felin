@@ -9,7 +9,7 @@ require "./models/Media.php";
 
 class MediaController
 {
-    private string $uploadFile = "/asset/uploads/";
+    private string $uploadFile = "./asset/uploads/";
     private array $allowedFileTypes = ["image/png", "image/PNG", "image/jpg", "image/JPG", "image/jpeg", "image/JPEG"];
     private int $maxFileSize = 2000000 ; // 2 Mo
     
@@ -31,23 +31,39 @@ class MediaController
     {
         
         if(!in_array($fileType, $this->allowedFileTypes)){
-            exit("Le fichier n'est pas authorisé");
-            
+            exit ("Le type fichier n'est pas authorisé");
+        }
+    }
+    
+    private function checkFileExist(int $fileError)
+    {
+        
+        if($fileError === 4){
+            exit ("Lveuiller ajouter un fichier");
         }
     }
     
     public function upload(array $file) : Media
     {
+        $id = null;
+        $this->checkFileExist($file['error']);
         $this->checkFileSize($file['size']);
         $this->checkFileType($file['type']); 
         $originalName = $file["name"];
         $fileName = $this->generateFileName();
         $fileType = pathinfo($originalName)["extension"];
-        $url = ".". $this->uploadFile . $fileName . ".". $fileType;
+        $url = $this->uploadFile . $fileName . ".". $fileType;
         
         move_uploaded_file($file["tmp_name"], $url);
         
-        return new Media($originalName, $fileName, $fileType, $url);
+        return new Media($id, $originalName, $fileName, $fileType, $url);
+    }
+    
+    public function deleteFile(string $url)
+    {
+        
+        unlink($url);
+        
     }
 }     
 

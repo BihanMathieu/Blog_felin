@@ -3,43 +3,30 @@
 require "./managers/MessageManager.php";
 
 class MessageController{
-    
-    
-    public function message(string $pages):void{
-        $page = $pages;
-        $mm = new MessageManager();
-        $getMessage = $mm->getMessage();
-        require "./templates/layout.phtml";
-    }
-    
+
+    //fonction pour créer un message
     function createMessage(){
         if(isset($_POST['submit'])){
             if(!empty($_POST['name']) && !empty($_POST['id']) && !empty($_POST['message'])){
-                $username = $_POST['name'];
-                $message = htmlspecialchars($_POST['message']);
-                $date = date('Y-m-d H:i:s');
-                $articleId = $_POST['id'];
-                
-                $mm = new MessageManager();
-                $createMessage = $mm->createMessage($username, $message, $date, $articleId);
-                
-                header('Location: index.php?route=article&id='.$_POST['id']);
-                
+                if(strlen($_POST['message']) < 255){
+                    date_default_timezone_set('Europe/Paris');
+                    $username = $_POST['name'];
+                    $message = htmlspecialchars($_POST['message']);
+                    $date = date('Y-m-d H:i:s');
+                    $articleId = $_POST['id'];
+                    
+                    $mm = new MessageManager();
+                    $createMessage = $mm->createMessage($username, $message, $date, $articleId);
+                    
+                    header('Location: index.php?route=article&id='.$_POST['id']);
+                }else{
+                    echo"<p>Votre message ne doit pas dépasser 255 caractères<p>";
+                }
                 
             }else{
-                echo "Veuillez remplir tout les champs";
+                echo"<p>Veuillez remplir tout les champs<p>";
             }    
         }
     }
-    
-    function getMessage(){
-        
-        $mm = new MessageManager();
-        $message = $mm->getMessage();
-        
-        var_dump($message);
-        
-    }
 }
-
 ?>

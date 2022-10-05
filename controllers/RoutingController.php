@@ -30,7 +30,7 @@ class RoutingController
             $cc->sendMail();
         }
         else if($route === "signIn")
-        {
+        {   
             $ac = new AuthentificationController();
             $ac->signIn();
             $ac->verificationConnexion();
@@ -64,16 +64,32 @@ class RoutingController
         }
         else if($route === "article")
         {
-            $ac = new ArticleController();
-            $ac->articleById($_GET['id']);
-        }
-        else if($route === "message"){
             $mc = new MessageController();
             $mc->createMessage();
+            $ac = new ArticleController();
+            $ac->articleById(intval($_GET['id']));
+        }
+        
+        // else if($route === "message"){
+        //     $mc = new MessageController();
+        //     $mc->createMessage();
+        // }
+        else if($route === "delete"){
+            $ac = new ArticleController();
+            $ac->deleteArticleById($_GET['id']);
+        }
+        else if($route === "update"){
+            $ac = new ArticleController();
+            $ac->updateArticle();
+            $ac->update(intval($_GET['id']));
+            
+            
         }
         else
         {
-            echo "<h1>404 page not found</h1>";
+            $page= '404';
+            require "./templates/layout.phtml";
+            // echo "<h1>404 page not found</h1>";
         }
     }
     

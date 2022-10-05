@@ -1,17 +1,14 @@
-<main class="sb">
-<?php foreach ($getArticle as $article){ 
-var_dump($article);
-?>  
-    
-    <section class="article">
-        <article>
-            <div>
-                <img src="<?=$article->getMedia()->getUrl();?>"></img>
-            </div>
-            <h1><?= $article->getTitle(); ?></h1>
-            <p><?= $article->getDescription(); ?></p>
-            <a href="index.php?route=article&amp;id=<?= $article->getId(); ?>">lire la suite</a>
+<main>
+<?php foreach ($getArticle as $article){?>  
+        <article class="articles border">
+            <img src="<?=$article->getMedia()->getUrl();?> " alt="<?=$article->getAlt();?>"></img>
+            <section class="card">
+                <section class="content">
+                    <?= $article->getContent(); ?> 
+                </section>
+                <a href="index.php?route=article&amp;id=<?= intval($article->getId()); ?>"><span class="line">lire la suite</span></a>
+            </section>
         </article>
-    </section>
         <?php } ?>
+        <script type="text/javascript" src="./asset/javascript/clear_session_storage.js"></script>
 </main>
