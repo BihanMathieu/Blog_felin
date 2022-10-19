@@ -64,32 +64,26 @@ class RoutingController
         }
         else if($route === "article")
         {
-            $mc = new MessageController();
-            $mc->createMessage();
             $ac = new ArticleController();
             $ac->articleById(intval($_GET['id']));
         }
-        
-        // else if($route === "message"){
-        //     $mc = new MessageController();
-        //     $mc->createMessage();
-        // }
         else if($route === "delete"){
             $ac = new ArticleController();
             $ac->deleteArticleById($_GET['id']);
         }
         else if($route === "update"){
             $ac = new ArticleController();
-            $ac->updateArticle();
             $ac->update(intval($_GET['id']));
-            
-            
+            $ac->updateArticle();
+        }
+        else if($route === "my-cats"){
+            $page = "my-cats";
+            require "./templates/layout.phtml";
         }
         else
         {
             $page= '404';
             require "./templates/layout.phtml";
-            // echo "<h1>404 page not found</h1>";
         }
     }
     

@@ -16,6 +16,7 @@ class PageManager
             
     }
     
+    //fonction pour récupérer les routes en bdd
     public function getAllPagesRoutes() : array
     {
         $query = $this->db->prepare('SELECT route FROM pages ');
@@ -25,6 +26,8 @@ class PageManager
         return $result;
     }
     
+    
+    //fonction pour récupérer les pages égale a $route
     public function getPageByRoute(string $route) : Page
     {
         $query = $this->db->prepare('SELECT * FROM pages WHERE pages.route = :route');

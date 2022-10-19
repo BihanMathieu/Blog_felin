@@ -4,14 +4,10 @@ require "./managers/AuthentificationManager.php";
 
 class AuthentificationController{
     
-    public $erreur = "";
     
     // fonction pour charger le template de connexion
     public function signIn():void{
         $page = "signIn";
-        // $ac = new
-        // $this->verificationConnexion();
-        // $erreur = $this->erreur;
         require "./templates/layout.phtml";
     }
     
@@ -35,9 +31,10 @@ class AuthentificationController{
                 $password = password_hash(htmlspecialchars($_POST['password']),PASSWORD_BCRYPT);
                 $admin = 'no';
                 
-                //je verifie que le nom et le mot de passe ne depasse pas 15 caracteres
-                if(strlen($username) > 15 || strlen($_POST['password']) > 15){
-                    echo "votre nom d'utilisateur ou mots de passe est trop long";
+                //je verifie le nombre de caractères des champs
+                if(strlen($username) >= 16 || strlen($username) <= 8 || strlen($_POST['password']) > 255 || strlen($_POST['password']) < 10){
+                    $_SESSION['error'] = '<p class="error">Un de vos champs ne respecte pas le nombre de caractères<p>';
+                    header('Location: index.php?route=registration');
                     
                 //je recupere la liste des utilisateurs
                 }else{
@@ -52,7 +49,8 @@ class AuthentificationController{
                     //je verifie que le nom rentre est n'est pas deja present dans la bdd 
                         if($user->getUsername() === $username){
                             $sameUser = true;
-                            echo "ce nom d'utilisateur est deja pris";
+                            $_SESSION['error'] = '<p class="error">Ce nom d\'utilisateur est déjà pris</p>';
+                            header('Location: index.php?route=registration');
                         }
                     }
                     
@@ -69,56 +67,12 @@ class AuthentificationController{
                     }
                 }
             }else{
-                echo"veuillez remplir tout les champs";
+                $_SESSION['error'] = '<p class="error">Veuillez remplir tout les champs<p>';
+                header('Location: index.php?route=registration');
             }
         }   
     }
-    
    
-    // //fonction pour la connexion
-    // function verificationConnexion(){
-        
-    //     //je verifie que le formulaire est envoye
-    //     if(!isset($_POST['submit'])){
-    //         return null;
-    //     }
-            
-    //     //je verifie que les champs ne sont pas vide
-    //     if(empty($_POST['username']) && empty($_POST['password'])){
-    //         $this->erreur = "<p>veuillez remplir tout les champs<p>";
-    //         return null;
-    //     }
-            
-    //     //j'instancie mes variables
-    //     $username = htmlspecialchars($_POST['username']);
-    //     $password = htmlspecialchars($_POST['password']);
-        
-    //     //je recupere les utilisateurs
-    //     $am = new AuthentificationManager();
-    //     $users = $am->verificationConnexion();
-        
-    //     //je fais defiler les utisateurs
-    //     foreach ($users as $user){
-            
-    //         //je regarde si un utilisateur a le même nom que celui rentré
-    //         if($user->getUsername() === $username ){
-                
-    //             //je regarde si le mot de passe correspond bien et je lance une session
-    //             if(password_verify($password, $user->getPassword())){
-    //                 $_SESSION['isLogin'] = true;
-    //                 $_SESSION['name'] = $username;
-    //                 $_SESSION['admin']= $user->getAdmin();
-                    
-    //                 //je renvoie l'utilisateur a la page d'acceuil
-    //                 header('Location: index.php?route=homescreen');
-    //                  return null;
-    //             }else{
-    //                 echo "votre mots de passe ou nom d'utilisateur n'est pas valide";
-    //                 $_SESSION['isLogin'] = false;
-    //             }
-    //         }
-    //     }
-    // }
     
      //fonction pour la connexion
     function verificationConnexion(){
@@ -128,44 +82,47 @@ class AuthentificationController{
             
             //je verifie que les champs ne sont pas vide
             if(!empty($_POST['username']) && !empty($_POST['password'])){
-                
-                //j'instancie mes variables
-                $username = htmlspecialchars($_POST['username']);
-                $password = htmlspecialchars($_POST['password']);
-                
-                //je recupere les utilisateurs
-                $ac = new AuthentificationManager();
-                $users = $ac->verificationConnexion();
-                
-                //je fais defiler les utisateurs
-                foreach ($users as $user){
+                //je verifie le nombre de caractères des champs
+                if(strlen($_POST['password']) < 255 && strlen($_POST['password']) > 10 && strlen($_POST['username']) <= 16 && strlen($_POST['username']) >= 8){
+                    //j'instancie mes variables
+                    $username = htmlspecialchars($_POST['username']);
+                    $password = htmlspecialchars($_POST['password']);
                     
-                    //je regarde si un utilisateur a le même nom que celui rentré
-                    if($user->getUsername() === $username ){
+                    //je recupere les utilisateurs
+                    $ac = new AuthentificationManager();
+                    $users = $ac->verificationConnexion();
+                    
+                    //je fais defiler les utisateurs
+                    foreach ($users as $user){
                         
-                        //je regarde si le mot de passe correspond bien et je lance une session
-                        if(password_verify($password, $user->getPassword())){
-                            $_SESSION['isLogin'] = true;
-                            $_SESSION['name'] = $username;
-                            $_SESSION['admin']= $user->getAdmin();
+                        //je regarde si un utilisateur a le même nom que celui rentré
+                        if($user->getUsername() === $username ){
                             
-                            //je renvoie l'utilisateur a la page d'acceuil
-                            header('Location: index.php?route=homescreen');
-                            
-                        }else{
-                            echo "votre mots de passe ou nom d'utilisateur n'est pas valide";
-                            $_SESSION['isLogin'] = false;
+                            //je regarde si le mot de passe correspond bien et je lance une session
+                            if(password_verify($password, $user->getPassword())){
+                                $_SESSION['isLogin'] = true;
+                                $_SESSION['name'] = $username;
+                                $_SESSION['admin']= $user->getAdmin();
+                                
+                                //je renvoie l'utilisateur a la page d'acceuil
+                                header('Location: index.php?route=homescreen');
+                                
+                            }else{
+                                $_SESSION['error'] = '<p class="error">Votre mots de passe ou nom d`utilisateur n`est pas valide<p>';
+                                $_SESSION['isLogin'] = false;
+                                header('Location: index.php?route=signIn');
+                            }
                         }
                     }
+                }else{
+                    $_SESSION['error'] = '<p class="error">Un de vos champs ne respecte pas le nombre de caractères<p>';
+                    header('Location: index.php?route=signIn');
                 }
             }else{
-                $_SESSION['error'] = "Les champs sont vide";
+                $_SESSION['error'] = '<p class="error">Veuillez remplir tout les champs<p>';
                 header('Location: index.php?route=signIn');
-                // $error = "Les champs sont vide";
-                // header('Location: index.php?route=signIn&error='.$error);
             }
         }
-        // $this->signIn();
     }
     
     //function de deconnexion

@@ -6,12 +6,17 @@
             <option>Actualité</option>
             <option>Espèce</option>
         </select>
-        <textarea name="content" id="content" placeholder="Ecriver votre article"></textarea>
+        <textarea name="content" id="content" placeholder="Ecriver votre article"  maxlength="10000"></textarea>
         <label>Selectionner l'image a upload</label>
         <section>
             <input type="file" name="image" id="fileToUpload">
-            <input type="text" name="descriptionImg" id="descriptionImg" placeholder="Décrire l'image"/>
+            <input type="text" name="descriptionImg" id="descriptionImg" placeholder="Décrire l'image" maxlength="255"/>
         </section>
+        <?php
+            if(isset($_SESSION['error'])){
+                echo $_SESSION['error'] ;
+                unset($_SESSION['error']);
+            }?>
         <input class="button" type="submit" name="submit" value="Publier" id="submit"> 
     </form>
     <script type="text/javascript" src="./asset/javascript/form_new_article.js"></script>
