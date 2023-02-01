@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db.3wa.io
--- Généré le : mer. 01 fév. 2023 à 09:59
+-- Généré le : mer. 01 fév. 2023 à 14:47
 -- Version du serveur :  5.7.33-0ubuntu0.18.04.1-log
 -- Version de PHP : 8.0.3
 
@@ -20,8 +20,10 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `mathieubihan_Blog_felin`
 --
+
 CREATE DATABASE IF NOT EXISTS Blog_felin;
 USE Blog_felin;
+
 -- --------------------------------------------------------
 
 --
@@ -65,28 +67,6 @@ CREATE TABLE `contacts` (
   `message` varchar(2048) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Déchargement des données de la table `contacts`
---
-
-INSERT INTO `contacts` (`id`, `name`, `email`, `message`) VALUES
-(1, 'film', 'jhojho@djffr', 'qsqsqs'),
-(2, 'film', 'jhojho@djffr', 'sxsxsxsx'),
-(3, 'jhgkhgkh', 'Mathieu.Bihan@3wa.io', 'mesage'),
-(4, 'mathieu', 'Mathieu.Bihan@3wa.io', 'voici mon message'),
-(5, 'salon 1', 'Mathieu.Bihan@3wa.io', 'messaqge'),
-(6, 'salon 1', 'Mathieu.Bihan@3wa.io', 'message'),
-(7, 'salon 1', 'Mathieu.Bihan@3wa.io', 'message'),
-(8, 'jhgkhgkh', 'subject', 'mmmmmmmmmmmmmmm'),
-(9, 'salon 1', 'subject', 'message'),
-(10, 'salon 1', 'subject', 'message'),
-(11, 'salon 1', 'message', 'Mathieu.Bihan@3wa.io'),
-(12, 'salon 1', 'Mathieu.Bihan@3wa.io', 'knclznozecnozeic'),
-(13, 'salon 1', 'Mathieu.Bihan@3wa.io', 'kqjdclzdkcnlqncqlknc'),
-(14, 'salon 1', 'gow321654987@hotmail.fr', 'kjdkjsbckjdsbcjsdc'),
-(15, 'mathieu', 'Mathieu.Bihan@3wa.io', 'skcnlqdsknclqksnc'),
-(16, 'blabla', 'blabla@blabla', 'blabla');
-
 -- --------------------------------------------------------
 
 --
@@ -128,27 +108,6 @@ CREATE TABLE `messages` (
   `date` datetime NOT NULL,
   `article_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `messages`
---
-
-INSERT INTO `messages` (`id`, `username`, `message`, `date`, `article_id`) VALUES
-(71, 'jesuisquelqun', 'Trop bien l&#039;article', '2022-10-18 18:19:33', 202),
-(72, 'jesuisquelqun', 'Trop bien l&#039;article', '2022-10-18 18:19:33', 202),
-(73, 'mathieu', 'sdfsdfsdf', '2022-10-18 18:34:43', 202),
-(74, 'mathieu', 'sdfsdfsdf', '2022-10-18 18:34:43', 202),
-(75, 'mathieu', 'dfgdfg', '2022-10-18 18:35:18', 202),
-(76, 'mathieu', 'dfgdfg', '2022-10-18 18:35:18', 202),
-(77, 'mathieu', 'ghghg', '2022-10-18 18:35:33', 202),
-(78, 'mathieu', 'ghghg', '2022-10-18 18:39:25', 202),
-(79, 'mathieu', 'hhhhhhhh', '2022-10-18 18:39:40', 202),
-(80, 'mathieu', 'fghfghfgh', '2022-10-18 18:43:13', 201),
-(81, 'mathieu', 'sssssss', '2022-10-19 11:06:31', 202),
-(82, 'mathieubihan', 'je suis en soutance', '2022-10-19 16:20:25', 202),
-(83, 'mathieubihan1', 'je suis en soutenance', '2022-10-19 17:12:19', 198),
-(84, 'mathieubihan2', 'je suis en soutenance', '2022-10-19 17:39:11', 198),
-(85, 'mathieubihan4', 'je suis en soutenance', '2022-10-20 10:30:42', 202);
 
 -- --------------------------------------------------------
 
@@ -199,17 +158,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `admin`) VALUES
-(67, 'mathieuB', '$2y$10$AiQcK2UiiX.e.xk.dJ0c8eIyei6jMBbxY.zleScOF6c1dbAS8goN6', 'yes'),
-(68, 'jesuisunuser', '$2y$10$HOGvdtNrwtMXK2Mr/FV7tOx9GOLb/Y5HXg7lrxXrQw3GEj1IaKt7C', 'no'),
-(69, 'mathieubihan', '$2y$10$btSsVR6xEFnycQ7Ng.O4CuaV8yVnzIrVvj0CraY/X3l2iDFVP52bi', 'no'),
-(70, 'mathieubihan1', '$2y$10$F1EVmZ878IF8h53H7o2CbuHI7PmowWItC/6sWruYoOYkXlwHVb7Mi', 'no'),
-(71, 'mathieubihan2', '$2y$10$Bo6KutYPLTml/HyaoSJN7um87QdHo8vaVHl5HBQ/oDnVRAQqM/Aq.', 'no'),
-(72, 'mathieubihan4', '$2y$10$JAHzKQXgdGMrmsgcvXGmC.jHqwZv7lPvxdZuR7p783csnhPNNxKjy', 'no'),
-(73, 'MathieuBihan', '$2y$10$aHsSXjrXcx5lt05E4GRe0OdP18wN15Lvs7Wx9ZasFFp0MnXO7XGxy', 'yes'),
-(74, 'MathieuBihan1', '$2y$10$GnQ2Jrt.JFOdSN1tPPSFg.F0dO1iFmKsWZ.QDqv0fB0nC.dobPnAG', 'yes'),
-(75, 'MathieuBihan35', '$2y$10$pIhnINShUVDH1GNuiR/ukul.zfhNDCvLc/YQo/JPRWrA0N0oWVZIi', 'yes'),
-(76, 'adminadmin', '$2y$10$0lsZcP5a9RVnSBqL4qwfZ.6RXBZeO0w9G7.oigqhgrb2Huq7Zm/IK', 'no'),
-(77, 'adminadmin2', '$2y$10$4Sywmya4MmmQOUfyF2UzvuNuyYGbyM2g7gE31t9n1jH0J8nBJh0rq', 'no');
+(80, 'adminadmin', '$2y$10$ltgDJmtGY4/9ODNSPLMA/On45yWgM9HM8S2vgZHM.Y4ITuNXDRRly', 'yes');
 
 --
 -- Index pour les tables déchargées
@@ -291,7 +240,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- Contraintes pour les tables déchargées
