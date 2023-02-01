@@ -1,0 +1,71 @@
+<main>
+    <!--on vérifie que la session est en admin-->
+    <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] === 'yes'){ ?>
+    
+    <!--si la session est admin alors on affiche les option-->
+    <a class="button button-primary" href='#delete'>Suprimer</a>
+    <a id="modify" class="button button-primary" href="index.php?route=update&amp;id=<?= $getArticle->getId(); ?>">Modifier</a>
+    <section>
+        <article id="delete" class="modal">
+            <section class="modal-window">
+                <p>Etes vous sur de voulair supprimer cette article</p>
+                <section class="choice">
+                    <a class="button button-secondary" class="close" href="#">Annuler</a>
+                    <a class="button button-primary" href="index.php?route=delete&amp;id=<?= $getArticle->getId(); ?>">Supprimer</a>
+                </section>
+            </section>
+        </article>
+    </section>
+    <?php } ?>
+    
+    <!--on affiche l'article -->
+    <section class="article">
+        <!--input servent a contenir les données pour le cas ou on modifierais l'article-->
+        <input id="category" type="hidden" value="<?= $getArticle->getCategory(); ?>">
+        <input id="descriptionImg" type="hidden" value="<?= $getArticle->getAlt(); ?>">
+        <input id="content" type="hidden" value="<?= $getArticle->getContent(); ?>">
+        <article>
+            <img src="/<?=$getArticle->getMedia()->getUrl()?>"></img>
+            <section>
+                <?= $getArticle->getContent(); ?> 
+            </section>
+        </article>
+    </section>
+    
+    <!--affichage des messages-->
+    <section class="messages">
+        <h1>Messages</h1>
+        <?php foreach($getMessage as $message){ ?>    
+        <article class="message">
+            <section>
+                <h3><?= $message->getUsername(); ?></h3>
+                <p>Envoyé le <span><?= $message->getDate(); ?></span></p>
+            </section>
+            <p><?= $message->getContent(); ?></p>
+        </article>
+        <?php } ?>
+    </section>
+        
+    <!--on vérifie si un utilisateur est connecté    -->
+    <?php if (isset($_SESSION['isLogin']) && $_SESSION['isLogin'] === true ){ ?>
+    <!--formulaire pour l'envoie de message-->
+    <form name="form_message" action="index.php?route=article&amp;id=<?= $getArticle->getId(); ?>" method="post">
+        <input type="hidden" name="name" value="<?= $_SESSION['name']; ?>"/>
+        <input type="hidden" name="id" value="<?= $_GET['id']; ?>"/>
+        <textarea type="textarea" cols="50" rows="10"  name="message" maxLength="255" id="textarea"></textarea>
+        <!--gestion des erreurs-->
+        <?php
+            if(isset($_SESSION['error'])){
+            echo $_SESSION['error'] ;
+            unset($_SESSION['error']);
+            }?>
+        <input type="submit" name="submit" value="Poster" id="submit"/>
+    </form>
+    <!--si personne n'est connecté on affiche le messge suivant-->
+    <?php }else{ ?>
+    <h5 class="connect-message">Pour poster un message veuillez vous <a href="index.php?route=signIn"><span class="line">connectez</span></a></h5>
+    <?php } ?>
+    
+    <!--script servant a l'envoie des données vers le formulaire update par le session storage-->
+    <script  src="./asset/javascript/update.js"></script>
+</main>

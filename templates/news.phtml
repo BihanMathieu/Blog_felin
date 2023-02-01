@@ -1,0 +1,18 @@
+<main class="sb">
+<?php
+    foreach ($getArticle as $article){ 
+        if($article->getCategory() === 'Actualité'){ ?>
+        <article class="articles border">
+            <img src="<?=$article->getMedia()->getUrl();?> " alt="<?=$article->getAlt();?>"></img>
+            <section class="card">
+                <section class="content">
+                    <?= $article->getContent(); ?> 
+                </section>
+                <a href="index.php?route=article&amp;id=<?= intval($article->getId()); ?>">lire la suite</a>
+            </section>
+        </article>
+<?php   
+        } 
+    }
+?>
+</main>

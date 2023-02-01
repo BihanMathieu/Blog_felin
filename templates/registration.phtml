@@ -1,0 +1,20 @@
+<main class=only-form>
+    <article class="connect">
+    <h1>Inscription</h1>
+        <form name="form_registration" action="index.php?route=registration" method="post">
+            <section>
+                <input type="text" name="username" placeholder="Nom d'utilisateur (8 à 16 caractères)" minlength="8" maxlength="16"/>
+            </section>
+            <section>
+                <input type="password" name="password" placeholder="Mots de passe (minimum 10 caractères)"minlength="10" maxlength="255"/>
+            </section>
+                <?php
+                if(isset($_SESSION['error'])){
+                    echo $_SESSION['error'] ;
+                    unset($_SESSION['error']);
+                }
+                ?>
+            <input type="submit" name="submit" value="Inscription" id="submit">
+        </form>
+    </article>
+</main>

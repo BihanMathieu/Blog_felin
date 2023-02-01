@@ -1,0 +1,610 @@
+
+/*SOMMAIRE*/
+
+/*General ligne 17*/
+/*modal update ligne 112*/
+/*header ligne 155*/
+/*article hommescreen species news ligne 283*/
+/*articles read ligne 342*/
+/*message ligne 419*/
+/*inscription ligne 483*/
+/*new article ligne 511*/
+/*404 ligne 547*/
+/*my-cats ligne 557*/
+/*footer ligne 575*/
+
+/***************************************************/
+/*general*/
+/***************************************************/
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Fjalla+One&display=swap');
+
+
+h1,h2,h3,h4,h5,h6,header{
+    font-family: 'Fjalla One', sans-serif;
+    letter-spacing:1px;
+}
+
+p,a{
+    font-family: 'Fira Sans', sans-serif;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+a{
+    text-decoration: none;
+    color:#d91000;
+    cursor:pointer;
+}
+
+h1{
+    text-align: center;
+}
+
+input{
+    display:block;
+}
+
+input:focus-visible{
+    outline:solid 1px #d91000;
+}
+
+.line{
+    border-bottom:1px solid #d91000;
+}
+
+#submit{
+    width:40%;
+    height:2.5rem;
+    font-size: 1rem;
+    background-color: #d91000;
+    color:white;
+    margin-top:2rem;
+    border-radius:15px;
+    margin:10px auto;
+    cursor:pointer;
+    font-family: 'Fjalla One', sans-serif;
+    letter-spacing:1px;
+}
+
+.button-primary{
+    background-color: #d91000;
+    color:#fff;
+    transition: all 0.2s ease-in-out;
+}
+
+.button-secondary{
+    color:#d91000;
+    border:1px solid #d91000;
+    transition: all 0.2s ease-in-out;
+}
+
+.button{
+    padding:5px 10px;
+    margin:10px;
+    border-radius:5px;
+    font-size:1.2rem;
+    font-weight: bold;
+    font-family: 'Fjalla One', sans-serif;
+    letter-spacing:1px;
+}
+
+.button-primary:hover{
+    background-color: #e92031;
+    box-shadow: 1px 1px 3px #e92031;
+}
+
+.button-secondary:hover{
+    background-color: #d91000;
+    color:#fff;
+    box-shadow: 1px 1px 3px #d91000;
+}
+
+.error{
+    color:red;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    margin:10px;
+}
+
+header{
+    max-height: 10vh;
+}
+
+main{
+    min-height: 75vh;
+}
+
+footer{
+    min-height: 15vh;
+}
+
+/***************************************************/
+/*modal update*/
+/***************************************************/
+
+.modal{
+    display:none;
+}
+
+.modal:target{
+    display:flex;
+    margin:0 auto;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    position: absolute;
+    z-index: 100;
+    height: 100vh;
+    width: 1200px;
+    
+}
+
+.modal-window{
+    font-size:1.2rem;
+    font-weight: bold;
+    padding:15px;
+    background-color: #fff;
+    border:1px solid black;
+    border-radius:5px;
+}
+.modal .choice{
+    display:flex;
+    justify-content:space-around;
+    margin:15px 0;
+}
+
+.close:target .modal{
+    display:none;
+}
+
+/***************************************************/
+/*header*/
+/***************************************************/
+
+.logo{
+    height:5rem;
+}
+
+nav{
+    display:flex;
+    justify-content: space-between;
+    background-color: black;
+    margin:auto;
+}
+
+nav ul{
+    position:absolute;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    list-style:none;
+    text-align:center;
+    height:100vh;
+    width:100%;
+    margin-left:-100%;
+    z-index:100;
+    background-color: #d9d9d9ed;
+}
+
+nav ul li{
+    font-size: 2rem;
+    margin:20px;
+}
+
+nav ul p{
+    color:#d91000;
+}
+
+#label{
+    width:80px;
+    height:80px;
+    background-image: url(../images/hamburger-menu-icon-png-white-10.jpg);
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position: center;
+    right: 10px;
+    position:absolute;
+    z-index:101;
+}
+
+#checkbox{
+    display:none;
+}
+
+#checkbox:checked+.nav-links{
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    
+    
+    #label{
+       display:none;
+    }
+    
+    nav ul{
+        position:relative;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        height: 7vh;
+        list-style:none;
+        margin-left:0;
+        background-color: #d9d9d900;
+    }
+    
+    nav ul li{
+        font-size: 1.2rem;
+        margin:10px;
+    }
+
+    nav li{
+        margin:10px;
+    }
+}
+
+@media (min-width: 1080px) {
+    header{
+        margin-bottom:50px;
+    }
+    .homescreen{
+        background-image: url(../images/home_banner2.jpg);
+        background-size:cover;
+        background-repeat:no-repeat;
+        background-position: center;
+        min-width:99vw;
+        min-height:100vh;
+    }
+    
+    .homescreen nav{
+        position:fixed;
+        width:100%;
+        background-color: inherit;
+    }
+    
+    
+    nav ul li{
+        font-size: 1.8rem;
+    }
+    
+    .homescreen .scroll{
+        background-color: rgba(0,0,0,0.5);
+    }
+
+}
+
+/***************************************************/
+/*article hommescreen species news*/
+/***************************************************/
+
+main{
+    width:90%;
+    margin:auto;
+    background-color: #fff;
+    font-size: 1rem;
+}
+
+.articles{
+   margin:50px 0;
+}
+
+.border{
+    border:solid rgba(0, 0, 0, .1);
+}
+
+.articles h1{
+    text-align: center;
+    margin:1rem;
+}
+.articles img{
+    width:100%;
+    height:auto;
+}
+
+.articles a{
+    margin:10px;
+    display:block;
+    text-align: center;
+    font-weight:bold;
+}
+
+.content{
+    height:180px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    padding:15px;
+}
+
+@media (min-width: 768px) {
+
+    .articles{
+       display:flex;
+    }
+
+    .articles img{
+        width:40%;
+    }
+
+    .card{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+/***************************************************/
+/*articles read*/
+/***************************************************/
+
+main{
+    width:90%;
+    margin:auto;
+    background-color: #fff;
+    font-size: 1rem;
+}
+
+.article{
+   margin:50px 0;
+}
+
+.border{
+    border:solid rgba(0, 0, 0, .1);
+}
+
+.article h1{
+    text-align: center;
+    margin:1rem;
+}
+.article img{
+    width:100%;
+    height:auto;
+    border-radius:5px;
+}
+
+.article a{
+    margin:10px;
+    display:block;
+    text-align: center;
+    font-weight:bold;
+}
+
+.article{
+   margin:50px 0;
+   display:flex;
+}
+
+.border{
+    border:solid rgba(0, 0, 0, .1);
+}
+
+.article h1{
+    text-align: center;
+    margin:1rem;
+}
+.article img{
+    width:100%;
+    height:auto;
+}
+
+.article a{
+    margin:10px;
+    display:block;
+    text-align: center;
+    font-weight:bold;
+}
+
+.line{
+    border-bottom:1px solid #d91000;
+}
+
+
+@media (min-width: 1080px){
+    main{
+        max-width:1200px;
+    }
+    
+    .article{
+        font-size: 1.5rem;
+    }
+}
+
+
+/***************************************************/
+/*message*/
+/***************************************************/
+
+.messages h1{
+    text-align: center;
+    color:#d91000;
+    margin:20px;
+}
+
+.message{
+    padding:15px;
+    margin-bottom:2rem;
+    border:1px solid rgba(0,0,0, 0.5);
+    border-radius:4px;
+}
+
+.message section {
+    padding:10px;
+    border-bottom:1px dashed black;
+}
+
+.message section span{
+    font-weight: bold;
+}
+
+.message section p{
+    text-align: right;
+    padding:10px;
+    font-size: 0.8rem;
+}
+
+.message p {
+    padding:20px;
+}
+
+#textarea{
+    width:100%;
+    height:10rem;
+    display:block;
+    font-size: 1.2rem;
+    margin-bottom:2rem;
+}
+
+.connect-message{
+    text-align: center;
+    font-size: 1rem;
+}
+
+@media (min-width: 768px){
+    .messages h1{
+        font-size: 1.5rem;
+    }
+    .message section p{
+        font-size: 1.2rem;
+    }
+    
+    .message p{
+        font-size: 1.2rem;
+    }
+    .connect-message{
+        font-size: 1.5rem;
+    }
+}
+/***************************************************/
+/*inscription*/
+/***************************************************/
+.only-form{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+}
+
+.connect section input{
+   width:90%;
+   height:3rem;
+   margin:2rem auto;
+   font-size: 1rem;
+   border:1px solid black;
+   padding:5px;
+}
+
+.connect h2{
+    text-align:center;
+    margin:2rem;
+}
+
+.connect h1{
+    font-size: 3rem;
+    margin:2rem;
+}
+
+/***************************************************/
+/*new article*/
+/***************************************************/
+
+.editor{
+    display:flex;
+    flex-direction:column;
+}
+
+.editor label{
+    font-size: 1.2rem;
+    margin:20px 0;
+}
+
+#category{
+    width:20%;
+    font-size: 1.2rem;
+}
+
+
+.editor select{
+    margin:20px 0;
+}
+.editor .content{
+    height:500px;
+}
+
+.editor section{
+    display:flex;
+    margin:20px 0;
+}
+
+.ck-content{
+    height:500px;
+}
+
+/***************************************************/
+/*404*/
+/***************************************************/
+
+.img404{
+    margin: auto;
+    display: block;
+    margin-top: 100px;
+}
+
+/***************************************************/
+/*my-cats*/
+/***************************************************/
+
+.myCats{
+    width:90%;
+    margin:auto;
+    text-align: center;
+    margin:50px auto;
+}
+
+.myCats img{
+    width:inherit;
+    border-radius:5px;
+}
+
+/***************************************************/
+/*footer*/
+/***************************************************/
+
+footer{
+    width:100%;
+    font-size:1em;
+    color:#d20012;
+    background: black;
+    margin-top:20px;
+}
+
+.footer-category section{
+    text-align: center;
+    margin:25px;
+}
+
+.footer-category h2{
+    margin:25px;
+}
+
+.reseaux article a{
+    margin:10px;
+}
+
+.copyright{
+    text-align: center;
+    font-size: 0.5rem;
+}
+
+
+@media (min-width: 768px) {
+    
+    .footer-category{
+        display:flex;
+        justify-content: center
+    }
+}
+   

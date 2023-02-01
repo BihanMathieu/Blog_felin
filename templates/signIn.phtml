@@ -1,0 +1,21 @@
+<main class="only-form">
+    <article class="connect">
+        <h1>Connexion</h1>
+        <form name="form_signIn" action="index.php?route=signIn" method="post">
+            <section>
+                <input type="text" name="username" placeholder="Nom d'utilisateur"/>
+            </section>
+            <section>
+                <input type="password" name="password" placeholder="Mots de passe"/>
+            </section>
+            <?php
+                if(isset($_SESSION['error'])){
+                    echo $_SESSION['error'] ;
+                    unset($_SESSION['error']);
+                }
+                ?>
+            <input type="submit" name="submit" value="Se connecter" id="submit">       
+        </form>
+        <h2>Si vous n'êtes pas inscrit <a href="index.php?route=registration"><span class="line">Inscrivez-vous</span></a></h2>
+    </article>
+</main> 
