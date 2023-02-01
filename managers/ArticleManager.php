@@ -9,10 +9,11 @@ class ArticleManager{
     
     function __construct()
     {
-         $this->db = new PDO(
+        $this->db = new PDO (
             'mysql:host=127.0.0.1;port=3306;dbname=Blog_felin',
             'root',
-            ''
+            '',
+            array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES latin1')
             );
     }
     
