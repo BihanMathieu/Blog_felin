@@ -25,7 +25,7 @@
         <input id="descriptionImg" type="hidden" value="<?= $getArticle->getAlt(); ?>">
         <input id="content" type="hidden" value="<?= $getArticle->getContent(); ?>">
         <article>
-            <img src="/Blog_felin/<?=$getArticle->getMedia()->getUrl()?>"></img>
+            <img src="/<?=$getArticle->getMedia()->getUrl()?>"></img>
             <section>
                 <?= $getArticle->getContent(); ?> 
             </section>

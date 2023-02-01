@@ -8,11 +8,11 @@ class MessageManager{
     
     function __construct()
     {
-        $this->db = new PDO (
-        'mysql:host=db.3wa.io;port=3306;dbname=mathieubihan_Blog_felin',
-        'mathieubihan',
-        '363dce9d2ee9b1de8aa743164b30ff7f'
-        );
+         $this->db = new PDO(
+            'mysql:host=127.0.0.1;port=3306;dbname=Blog_felin',
+            'root',
+            ''
+            );
     }
     
     //fonction rentrer un message dans la bdd
